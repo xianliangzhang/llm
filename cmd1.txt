@@ -1,0 +1,15 @@
+# 指向你的GGUF文件（用正斜杠/或双反斜杠\\）
+FROM D:/models/phi3/Phi-3-mini-4k-instruct-Q4_K_M.gguf
+
+# Phi-3 官方对话模板（必须！否则格式错乱）
+TEMPLATE """{{if .System}}{{.System}}{{end}}<|user|>\n{{.Prompt}}<|end|>\n<|assistant|>"""
+
+# 停止标记（防止生成特殊token）
+PARAMETER stop "<|end|>"
+PARAMETER stop "<|user|>"
+PARAMETER stop "<|assistant|>"
+
+# 推荐参数
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER num_ctx 4096  # Phi-3-mini上下文长度

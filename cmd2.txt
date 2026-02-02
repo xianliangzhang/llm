@@ -1,0 +1,12 @@
+# 进入 Modelfile 所在目录
+cd D:\models\phi3
+
+# 创建自定义模型（名称可自定义）
+ollama create my-phi3 -f Modelfile
+
+# 验证是否成功
+ollama list          # 应显示 my-phi3
+ollama show my-phi3 --modelfile  # 检查配置
+
+# 测试运行
+ollama run my-phi3 "你好，用中文介绍你自己"
